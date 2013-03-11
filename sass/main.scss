@@ -1,0 +1,413 @@
+// bootstrap vars and mixins
+
+@import "lib/variables";
+@import "lib/mixins";
+
+
+// compass
+@import "compass/css3/images";
+
+// colors
+
+$brown-light : #7F3023;
+$brown : $brown-light;
+$brown-dark : #371212;
+$olive-clr : #988F15;
+$bg-clr : #F6F4D7;
+
+$yellow: #ebe595;
+
+
+// font sullivan
+@font-face {
+    font-family: 'sullivan';
+    src: url('../fonts/sullivan-fill-webfont.eot');
+    src: url('../fonts/sullivan-fill-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sullivan-fill-webfont.woff') format('woff'),
+         url('../fonts/sullivan-fill-webfont.ttf') format('truetype'),
+         url('../fonts/sullivan-fill-webfont.svg#sullivanfill') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/***********************************************
+ *   General styles
+ **********************************************/
+
+body {
+  background: $bg-clr image-url("background.jpg");
+  line-height: 1.4;
+}
+
+// links
+a {
+  color: $brown-light;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    text-decoration: none;
+    color: $olive-clr;
+  }
+}
+
+// other
+.ta-r {
+  text-align: right;
+}
+.ta-c {
+  text-align: center;
+}
+.size-36 {
+  font-size: 36px;
+}
+.size-19 {
+  font-size: 19px;
+}
+.size-16 {
+  font-size: 16px;
+}
+.full-width {
+  width: 100%;
+  height: auto;
+}
+.dark {
+  color: $brown-dark;
+}
+small {
+  font-size: 11px;
+}
+.no-margin {
+  margin: 0;
+} 
+.push-down-35 {
+  margin-top: 35px;
+}
+.push-down-25 {
+  margin-top: 25px;
+}
+.push-down-104 {
+  margin-top: 104px;
+}
+.light {
+  font-weight: normal;
+}
+
+// fonts
+%oswald {
+  font-family: 'Oswald', $sansFontFamily;
+}
+%sullivan {
+  font-family: 'sullivan', $sansFontFamily;
+}
+%domine {
+  font-family: $serifFontFamily;
+}
+.oswald {
+  @extend %oswald;
+}
+.sullivan {
+  @extend %sullivan;
+}
+
+// headings
+h1 {
+  @extend %sullivan;
+  font-size: 93px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+h2 {
+  @extend %oswald;
+  font-weight: bold;
+  font-size: 36px;
+  color: $brown-light;
+  text-transform: uppercase;
+} 
+h3 {
+  @extend %domine;
+  font-weight: bold;
+  font-size: 20px;
+  color: $brown-light;
+}
+h4 {
+  @extend %domine;
+  font-weight: normal;
+  font-size: 16px;
+  color: $brown;
+  text-transform: uppercase;
+}
+h5 {
+  @extend %domine;
+  font-weight: bold;
+  font-size: 18px;
+  color: $brown-dark;
+}
+
+// buttons and forms
+.btn-theme {
+  @include border-radius(0);
+  background: $yellow;
+  border: 1px solid $brown;
+  text-transform: uppercase;
+  color: $brown;
+  @extend %sullivan;
+  font-size: 23px;
+  height: 33px;
+  padding-top: 5px;
+  
+  &:hover {
+    background: $brown;
+    color: $yellow;
+  }
+}
+
+.txt[type="text"],
+select,
+textarea {
+  @include border-radius(0);
+  border: 1px solid $brown;
+  font-style: italic;
+  
+  color: #9f894d;
+  font-size: 13px;
+  font-family: Georgia;
+  
+  &:focus,
+  &:active {
+    @include box-shadow(none);
+    border: 1px solid $brown;
+  }
+}
+
+
+
+/***********************************************
+ *   Main content
+ **********************************************/
+
+.body-bg {
+  @include background(image-url("header.jpg") no-repeat, image-url("footer.jpg") bottom no-repeat);
+  background-color: $bg-clr;
+  @include background-size(100%);
+  @include box-shadow(0 0 85px #000);
+  border-left: 3px solid #7f3023;
+  border-right: 3px solid #7f3023;
+  margin: 0 -38px;
+  padding: 0 35px;
+  min-height: 800px;
+}
+
+
+// header
+header {
+  padding: 0 0 10px 0;
+  border-bottom: 6px solid $brown-dark;
+  
+  .logo {
+    text-align: center;
+    display: block;
+  }
+  .push-down {
+    margin-top: 100px;
+    text-align: right;
+  }
+}
+
+.menu {
+  margin-bottom: 15px;
+  
+  .nav-pills {
+    margin: 3px 0;
+    border-top: 3px solid $brown-dark;
+    border-bottom: 3px solid $brown-dark;
+    
+    li {
+      a {
+        @extend %sullivan;
+        margin: 0;
+        @include border-radius(0);
+        font-size: 26px;
+        padding: 16px;
+        text-transform: uppercase;
+        font-weight: normal;
+        
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $brown-dark;
+          color: $bg-clr;
+        }
+      }
+      &.active {
+        a {
+          background-color: $brown-dark;
+          color: $bg-clr;
+        }
+      }
+    }
+  }
+}
+
+// main content
+.home-banner-container {
+  background: image-url('home-banner-container.jpg') no-repeat;
+  @include background-size(100%);
+  padding: 3% 2% 3% 2.5%;
+  margin-bottom: 10px;
+}
+
+.home-title-left {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+%list {
+  .line {
+    color: $brown;
+    border-top: 3px solid $brown-dark;
+    padding: 10px;
+    font-weight: bold;
+    
+    &.current {
+      background-color: $brown-dark;
+      color: $yellow;
+    }
+  }
+}
+.home-list {
+  @extend %list;
+}
+
+
+
+
+.site-title {
+  margin: 15px 0 30px;
+  
+  img {
+    vertical-align: bottom;
+  }
+}
+
+.download {
+  margin-top: 10px;
+  font-style: italic;
+  
+  a {
+    span {
+      text-decoration: underline;
+    }
+    &:hover {
+      text-decoration: none;
+      
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.divider-line {
+  margin-left: -13px;
+  padding-left: 10px;
+  border-left: 3px solid $brown-dark;
+}
+
+// events
+.events-list {
+  @extend %list;
+  
+  a {
+    text-decoration: none;
+    
+    &:hover {
+      background-color: $brown-dark;
+      color: $yellow;
+      .dark {
+        color: $bg-clr;
+      }
+    }
+  }
+  .line {
+    display: block;
+    
+    &.current {
+      .dark {
+        color: $bg-clr;
+      }
+    }
+    &:last-child {
+      border-bottom: 3px solid $brown-dark;
+    }
+  }
+}
+.red-block {
+  height: 220px;
+  background-color: $brown;
+  margin-bottom: 20px;
+}
+
+// private parties
+.private.form {
+  padding-top: 30px;
+}
+
+// contact
+.gmap {
+  border: 1px solid $brown;
+  max-width: 100%;
+}
+
+
+
+
+/***********************************************
+ *   Footer
+ **********************************************/
+
+footer {
+  border-top: 3px solid $brown-dark;
+  padding-top: 3px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  
+  .line-2 {
+    border-top: 6px solid $brown-dark;
+    padding-top: 15px;
+  }
+  nav {
+    color: $brown;
+    margin-bottom: 15px;
+  }
+  small {
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+
+
+
+/***********************************************
+ *   Responsive
+ **********************************************/
+
+@media (max-width: 767px) {
+  .body-bg {
+    margin: 0 -10px;
+    padding: 0 5px;
+  }
+  footer form {
+    .txt {
+      margin-bottom: 10px;
+    }
+  }
+}
